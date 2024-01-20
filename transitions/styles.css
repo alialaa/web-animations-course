@@ -6,4 +6,10 @@ body {
   width: 200px;
   height: 200px;
   background-color: purple;
+  transition: 2s 1s ease-in-out all;
+}
+
+.square:hover {
+  transform: rotate(45deg);
+  background-color: skyblue;
 }
