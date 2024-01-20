@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transitions</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const element = document.querySelector(".square");
+        document.addEventListener("click", (event) => {
+          element.style.transform = `translateY(${
+            event.clientY - element.clientHeight / 2
+          }px) translateX(${event.clientX - element.clientWidth / 2}px)`;
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="square"></div>
