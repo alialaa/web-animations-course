@@ -9,11 +9,19 @@
       document.addEventListener("DOMContentLoaded", () => {
         const element = document.querySelector(".square");
         const addButton = document.querySelector(".add-square");
+        const toggleColorButton = document.querySelector(".toggle-color");
 
         addButton.addEventListener("click", () => {
           const newSquare = document.createElement("div");
           newSquare.classList.add("square");
           document.querySelector(".wrapper").appendChild(newSquare);
+        });
+
+        toggleColorButton.addEventListener("click", () => {
+          const squares = document.querySelectorAll(".square");
+          squares.forEach((square) => {
+            square.classList.toggle("blue");
+          });
         });
       });
     </script>
@@ -23,5 +31,6 @@
       <div class="square"></div>
     </div>
     <button class="add-square">Add Square</button>
+    <button class="toggle-color">Toggle Color</button>
   </body>
 </html>
