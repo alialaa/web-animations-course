@@ -8,16 +8,20 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const element = document.querySelector(".square");
-        const toggleButton = document.querySelector(".toggle-square");
+        const addButton = document.querySelector(".add-square");
 
-        toggleButton.addEventListener("click", () => {
-          element.classList.toggle("hide");
+        addButton.addEventListener("click", () => {
+          const newSquare = document.createElement("div");
+          newSquare.classList.add("square");
+          document.querySelector(".wrapper").appendChild(newSquare);
         });
       });
     </script>
   </head>
   <body>
-    <div class="square"></div>
-    <button class="toggle-square">Toggle Square</button>
+    <div class="wrapper">
+      <div class="square"></div>
+    </div>
+    <button class="add-square">Add Square</button>
   </body>
 </html>

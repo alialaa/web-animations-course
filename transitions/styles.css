@@ -6,7 +6,14 @@ body {
   width: 100px;
   height: 100px;
   background-image: linear-gradient(purple, yellow);
-  transition: display 2s allow-discrete, opacity 2s;
+  transition: display 0.5s allow-discrete, opacity 0.5s, transform 0.5s;
+}
+
+@starting-style {
+  .square {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
 
 .square.hide {
