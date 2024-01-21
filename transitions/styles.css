@@ -6,9 +6,10 @@ body {
   width: 100px;
   height: 100px;
   background-image: linear-gradient(purple, yellow);
-  transition: all 2s allow-discrete;
+  transition: display 2s allow-discrete, opacity 2s;
 }
-.square:hover {
-  background-image: linear-gradient(skyblue, violet);
-  transform: translateX(100px);
+
+.square.hide {
+  display: none;
+  opacity: 0;
 }

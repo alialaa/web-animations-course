@@ -8,10 +8,16 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const element = document.querySelector(".square");
+        const toggleButton = document.querySelector(".toggle-square");
+
+        toggleButton.addEventListener("click", () => {
+          element.classList.toggle("hide");
+        });
       });
     </script>
   </head>
   <body>
     <div class="square"></div>
+    <button class="toggle-square">Toggle Square</button>
   </body>
 </html>
