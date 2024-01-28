@@ -8,7 +8,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const progressCount = 10;
-        const ball = document.querySelector(".element");
+        const element = document.querySelector(".element");
         const progress = document.querySelector(".progress");
         const button = document.querySelector(".move-button");
 
@@ -24,7 +24,7 @@
           });
 
         button.addEventListener("click", () => {
-          ball.classList.toggle("move");
+          element.classList.toggle("move");
         });
       });
     </script>
