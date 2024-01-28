@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Timing Functions</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const progressCount = 10;
+        const ball = document.querySelector(".element");
+        const progress = document.querySelector(".progress");
+        const button = document.querySelector(".move-button");
+
+        Array(progressCount + 1)
+          .fill(null)
+          .forEach((_null, i) => {
+            const node = document.createElement("div");
+            node.classList.add("progress-value");
+            node.innerHTML = `<div class="number">${
+              (i / progressCount) * 100
+            }%<div>`;
+            progress.append(node);
+          });
+
+        button.addEventListener("click", () => {
+          ball.classList.toggle("move");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="progress"></div>
+    <div class="track">
+      <div class="element"></div>
+    </div>
+    <br />
+    <button class="move-button">Move Element</button>
+  </body>
+</html>

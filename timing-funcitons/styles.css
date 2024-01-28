@@ -1,0 +1,50 @@
+body {
+  background-color: #1d1d1d;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 20px;
+  --scale-color: lightgrey;
+}
+
+.track {
+  position: relative;
+  border: 2px solid var(--scale-color);
+  height: 50px;
+}
+
+.element {
+  width: 10px;
+  height: 50px;
+  background-color: greenyellow;
+  transition: left 2s;
+  left: -5px;
+  position: absolute;
+}
+
+.element.move {
+  left: calc(100% - 5px);
+}
+
+.progress {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-value {
+  color: var(--scale-color);
+  position: relative;
+  font-size: 14px;
+  line-height: 16px;
+  padding-top: 16px;
+}
+.progress-value .number {
+  position: absolute;
+  transform: translateX(-50%) translateY(-110%);
+}
+.progress-value::after {
+  content: "";
+  display: block;
+  height: 10px;
+  width: 2px;
+  background-color: var(--scale-color);
+}
