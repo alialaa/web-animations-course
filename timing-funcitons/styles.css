@@ -16,12 +16,16 @@ body {
   width: 10px;
   height: 50px;
   background-color: greenyellow;
-  /* linear */
-  /* linear(0, 0.25, 1) */
-  /* linear(0, 0.25, 0.25, 0.5, 1) */
-  /* linear(0, 0.25 75%, 1) */
-  /* linear(0, 0.5 25% 75%, 1) */
-  transition: left 2s linear(0 0%, 1 100%);
+  /*
+  - cubic-bezier(.5,0,1,.14) -> Custom Function
+  - cubic-bezier(0,1,1,0) -> Corresponds to linear
+  - cubic-bezier(.21,-0.59,.83,1.52) -> With Bounce
+  - ease -> cubic-bezier(0.25, 0.1, 0.25, 1)
+  - ease-in -> cubic-bezier(0.42, 0, 1, 1)
+  - ease-out -> cubic-bezier(0, 0, 0.58, 1)
+  - ease-in-out -> cubic-bezier(0.42, 0, 0.58, 1)
+  */
+  transition: left 2s ease-in-out;
   left: -5px;
   position: absolute;
 }
