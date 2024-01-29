@@ -17,15 +17,18 @@ body {
   height: 50px;
   background-color: greenyellow;
   /*
-  - cubic-bezier(.5,0,1,.14) -> Custom Function
-  - cubic-bezier(0,1,1,0) -> Corresponds to linear
-  - cubic-bezier(.21,-0.59,.83,1.52) -> With Bounce
-  - ease -> cubic-bezier(0.25, 0.1, 0.25, 1)
-  - ease-in -> cubic-bezier(0.42, 0, 1, 1)
-  - ease-out -> cubic-bezier(0, 0, 0.58, 1)
-  - ease-in-out -> cubic-bezier(0.42, 0, 0.58, 1)
+  steps(1, start)
+  steps(1, end)
+  steps(2, start)
+  steps(2, end)
+  steps(2, jump-none)
+  steps(2, jump-both)
+  steps(4, start)
+  steps(4, end)
+  steps(4, jump-start)
+  steps(4, jump-none)
   */
-  transition: left 2s ease-in-out;
+  transition: left 2s steps(4, jump-both);
   left: -5px;
   position: absolute;
 }
