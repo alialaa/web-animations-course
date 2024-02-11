@@ -9,4 +9,21 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
+  /* animation-name: move;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+  animation-play-state: paused; */
+  animation: 2s 0s 2 alternate running move;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw - 140px));
+  }
 }
