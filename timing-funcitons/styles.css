@@ -16,18 +16,6 @@ body {
   width: 10px;
   height: 50px;
   background-color: greenyellow;
-  /*
-  steps(1, start)
-  steps(1, end)
-  steps(2, start)
-  steps(2, end)
-  steps(2, jump-none)
-  steps(2, jump-both)
-  steps(4, start)
-  steps(4, end)
-  steps(4, jump-start)
-  steps(4, jump-none)
-  */
   transition: left 2s steps(4, jump-both);
   left: -5px;
   position: absolute;
