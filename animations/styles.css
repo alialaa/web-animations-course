@@ -9,18 +9,24 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
-
-  animation-name: move, bounce;
-  animation-duration: 2s, 0.3s;
-  animation-delay: 0s;
-  animation-timing-function: linear, ease-in-out;
-  animation-iteration-count: infinite, 6;
-  animation-direction: alternate;
-  animation-play-state: running;
-
-  /* animation: 2s 0s infinite alternate running move,
-    0.3s ease-in-out infinite alternate bounce; */
+  /* transform: rotate(45deg); */
+  animation: 2s ease-in-out infinite alternate move,
+    0.3s ease-in-out infinite alternate bounce;
+  animation-composition: add;
 }
+
+/* animation-composition: replace;
+  0% -> transform: translateX(0);
+  100% -> transform: translateX(calc(100vw - 140px));
+*/
+/* animation-composition: add;
+  0% -> transform: rotate(45deg) translateX(0) rotate(45deg);
+  100% -> transform: rotate(45deg) translateX(calc(100vw - 140px));
+*/
+/* animation-composition: accumulate;
+  0% -> transform: translateX(0) rotate(90deg);
+  100% -> transform: rotate(45deg) translateX(calc(100vw - 140px)) ;
+*/
 
 @keyframes move {
   0% {
@@ -30,9 +36,6 @@ body {
     transform: translateX(calc(100vw - 140px));
   }
 }
-
-/* 0% -> transform: translateX(0) translateY(0) */
-/* 100% -> transform: translateX(calc(100vw - 140px)) translateY(100px) */
 
 @keyframes bounce {
   0% {
