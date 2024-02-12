@@ -6,7 +6,21 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Animations</title>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {});
+      document.addEventListener("DOMContentLoaded", () => {
+        const element = document.querySelector(".square");
+        element.addEventListener("animationstart", (e) => {
+          console.log("animationstart", e);
+        });
+        element.addEventListener("animationend", (e) => {
+          console.log("animationend", e);
+        });
+        element.addEventListener("animationiteration", (e) => {
+          console.log("animationiteration", e);
+        });
+        element.addEventListener("animationcancel", (e) => {
+          console.log("animationcancel", e);
+        });
+      });
     </script>
   </head>
   <body>
