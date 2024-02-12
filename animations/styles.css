@@ -10,18 +10,38 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
-  animation: 2s ease-in-out 3 alternate move;
-  /* animation-play-state: paused; */
-  animation-direction: normal;
+  background-image: linear-gradient(gold, purple);
+  animation: 5s fade-in;
   animation-fill-mode: both;
-  animation-composition: add;
 }
 
-@keyframes move {
+@keyframes fade-out {
   0% {
-    transform: translateX(0);
+    display: block;
+    opacity: 1;
   }
   100% {
-    transform: translateX(calc(100vw - 140px));
+    display: none;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes flip-bg {
+  50% {
+    background-image: linear-gradient(violet, skyblue);
+  }
+  100% {
+    background-image: linear-gradient(greenyellow, maroon);
   }
 }
