@@ -72,6 +72,10 @@ body {
   animation: 1s steps(8, jump-none) infinite run;
 }
 
+.character.jump {
+  animation: 0.5s ease-in-out 2 alternate jump;
+}
+
 .background {
   position: absolute;
   height: 50vh;
@@ -105,6 +109,15 @@ body {
   }
   100% {
     background-position: calc(var(--char-width) * -7) 0;
+  }
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-70px);
   }
 }
 
