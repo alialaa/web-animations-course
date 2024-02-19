@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Web Animations API</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const square = document.querySelector(".square");
+        const pauseButton = document.querySelector(".pauseButton");
+        const playButton = document.querySelector(".playButton");
+        const reverseButton = document.querySelector(".reverseButton");
+        const durationInput = document.getElementById("durationInput");
+
+        pauseButton.addEventListener("click", () => {
+          square.classList.add("pause");
+        });
+        playButton.addEventListener("click", () => {
+          square.classList.remove("pause");
+        });
+        reverseButton.addEventListener("click", () => {
+          square.classList.toggle("reverse");
+        });
+        durationInput.addEventListener("input", (e) => {
+          square.style.animationDuration = `${e.target.value}ms`;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="square"></div>
+    <button class="pauseButton">Pause</button>
+    <button class="playButton">Play</button>
+    <button class="reverseButton">Reverse</button>
+    <input type="range" id="durationInput" step="100" min="500" max="5000" />
+  </body>
+</html>
