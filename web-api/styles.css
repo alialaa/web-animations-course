@@ -14,14 +14,6 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
-  animation: 3s 1s infinite alternate both linear moveAndRotate;
-}
-
-.square.pause {
-  animation-play-state: paused;
-}
-.square.reverse {
-  animation-direction: alternate-reverse;
 }
 
 @keyframes moveAndRotate {
