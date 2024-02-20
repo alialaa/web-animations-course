@@ -48,6 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
       if (button.classList.contains("finish")) {
         squareAnimation.finish();
       }
+      if (button.classList.contains("changeAnimation")) {
+        squareAnimation.effect.setKeyframes([
+          {
+            transform: "translateY(0)",
+          },
+          {
+            backgroundColor: "greenyellow",
+            offset: 0.8,
+          },
+          {
+            transform: "translateY(calc(100vh - 100px)) rotate(360deg)",
+            backgroundColor: "purple",
+          },
+        ]);
+      }
     });
   });
 
@@ -59,5 +74,21 @@ document.addEventListener("DOMContentLoaded", () => {
   playbackRateInput.addEventListener("input", (e) => {
     squareAnimation.updatePlaybackRate(e.target.value);
     playbackRateInputValue.value = e.target.value;
+  });
+
+  const durationInput = document.getElementById("durationInput");
+  const durationInputValue = document.getElementById("durationInputValue");
+  durationInput.addEventListener("input", (e) => {
+    squareAnimation.effect.updateTiming({
+      duration: +e.target.value,
+    });
+    durationInputValue.value = e.target.value;
+  });
+
+  const infiniteInput = document.getElementById("infiniteInput");
+  infiniteInput.addEventListener("change", (e) => {
+    squareAnimation.effect.updateTiming({
+      iterations: e.target.checked ? Infinity : 2,
+    });
   });
 });
