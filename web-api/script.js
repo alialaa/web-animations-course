@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const element = document.querySelector(".square");
   const squareAnimation = element.animate(
     [
@@ -144,4 +144,14 @@ document.addEventListener("DOMContentLoaded", () => {
   squareAnimation.play();
   console.log("playState after play(): ", squareAnimation.playState);
   console.log("pending after play(): ", squareAnimation.pending);
+
+  // await squareAnimation.finished;
+  // element.remove();
+  // console.log("Finished");
+  squareAnimation.addEventListener("finish", (e) => {
+    console.log(e);
+  });
+  squareAnimation.addEventListener("cancel", (e) => {
+    console.log(e);
+  });
 });
