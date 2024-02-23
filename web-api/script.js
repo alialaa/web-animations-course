@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       delay: 1000,
       direction: "alternate",
       fill: "both",
-      iterations: 2,
+      iterations: 1,
       easing: "linear",
-      composite: "add",
+      composite: "replace",
       iterationComposite: "accumulate",
       timeline: document.timeline,
     }
@@ -148,5 +148,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
     });
+  });
+
+  squareAnimation.addEventListener("finish", () => {
+    squareAnimation.commitStyles();
+    squareAnimation.cancel();
+    element.style.transform = "translateX(90px)";
   });
 });
