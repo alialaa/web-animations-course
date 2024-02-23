@@ -11,41 +11,8 @@
     <div class="square"></div>
 
     <div class="controls">
-      <br />
-      <label>Animations Speed</label>
-      <button class="speedButton decrease">-</button>
-      <button class="speedButton increase">+</button>
-      <br />
-      <button class="button logInfo">Log Info</button>
-      <div class="section">
-        <h3>Animation Object (DVD Player)</h3>
-        <button class="button play">Play</button>
-        <button class="button pause">Pause</button>
-        <button class="button cancel">Cancel</button>
-        <button class="button reverse">Reverse</button>
-        <button class="button finish">Finish</button>
-        <br /><br />
-        <label for="playbackRateInput">Playback Rate</label>
-        <input type="range" id="playbackRateInput" step="0.2" min="0" max="2" />
-        <output id="playbackRateInputValue" for="playbackRateInput">0</output>
-        <br /><br />
-        <label for="currentTimeInput">Current Time</label>
-        <input type="number" id="currentTimeInput" step="500" min="0" />
-        <br /><br />
-        <label for="startTimeInput">Start Time</label>
-        <input type="number" id="startTimeInput" step="500" min="0" />
-      </div>
-      <div class="section">
-        <h3>Animation Effect (KeyframeEffect, DVD)</h3>
-        <label for="durationInput">Duration</label>
-        <input type="range" id="durationInput" step="500" min="0" max="10000" />
-        <output id="durationInputValue" for="durationInput">0</output>
-        <br /><br />
-        <label>Infinite</label>
-        <input type="checkbox" id="infiniteInput" />
-        <br /><br />
-        <button class="button changeAnimation">Change Animation</button>
-      </div>
+      <button id="add-animation-button">Add New Animation</button>
+      <button id="log-animations-button">Log Animation</button>
     </div>
   </body>
 </html>
