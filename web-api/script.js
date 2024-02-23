@@ -1,22 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const element = document.querySelector(".square");
-  const element2 = document.querySelector(".square-3");
-
-  element2.animate(
-    [
-      {
-        backgroundColor: "red",
-      },
-      {
-        backgroundColor: "yellow",
-      },
-    ],
-    {
-      duration: 2000,
-      direction: "alternate",
-      iterations: Infinity,
-    }
-  );
 
   const squareAnimation = element.animate(
     [
@@ -150,32 +133,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   startTimeInput.addEventListener("input", (e) => {
     squareAnimation.startTime = e.target.value;
   });
-
-  // squareAnimation.pause();
-  // console.log("playState after pause(): ", squareAnimation.playState);
-  // console.log("pending after pause(): ", squareAnimation.pending);
-  // squareAnimation.ready.then(() => {
-  //   console.log("Animation Ready");
-  //   console.log("playState after ready: ", squareAnimation.playState);
-  //   console.log("pending after ready: ", squareAnimation.pending);
-  // });
-  // squareAnimation.play();
-  // console.log("playState after play(): ", squareAnimation.playState);
-  // console.log("pending after play(): ", squareAnimation.pending);
-
-  // await squareAnimation.finished;
-  // element.remove();
-  // console.log("Finished");
-  squareAnimation.addEventListener("finish", (e) => {
-    console.log(e);
-  });
-  squareAnimation.addEventListener("cancel", (e) => {
-    console.log(e);
-  });
-
-  // console.log(document.getAnimations());
-  // console.log(element.getAnimations({ subtree: true }));
-  // console.log(element2.getAnimations());
 
   const speedButtons = document.querySelectorAll(".speedButton");
   speedButtons.forEach((button) => {
