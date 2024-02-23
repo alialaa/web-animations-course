@@ -28,19 +28,29 @@ document.addEventListener("DOMContentLoaded", () => {
       timeline: document.timeline,
     }
   );
-  squareAnimation.pause();
 
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       if (button.classList.contains("play")) {
         squareAnimation.play();
+        console.log("pending", squareAnimation.pending);
+        squareAnimation.ready.then(() => {
+          console.log("playState after play()", squareAnimation.playState);
+          console.log("pending", squareAnimation.pending);
+        });
       }
       if (button.classList.contains("pause")) {
         squareAnimation.pause();
+        squareAnimation.ready.then(() => {
+          console.log("playState after pause()", squareAnimation.playState);
+        });
       }
       if (button.classList.contains("cancel")) {
         squareAnimation.cancel();
+        squareAnimation.ready.then(() => {
+          console.log("playState after cancel()", squareAnimation.playState);
+        });
       }
       if (button.classList.contains("reverse")) {
         squareAnimation.reverse();
@@ -122,4 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
   startTimeInput.addEventListener("input", (e) => {
     squareAnimation.startTime = e.target.value;
   });
+
+  squareAnimation.pause();
+  console.log("playState after pause(): ", squareAnimation.playState);
+  console.log("pending after pause(): ", squareAnimation.pending);
+  squareAnimation.ready.then(() => {
+    console.log("Animation Ready");
+    console.log("playState after ready: ", squareAnimation.playState);
+    console.log("pending after ready: ", squareAnimation.pending);
+  });
+  squareAnimation.play();
+  console.log("playState after play(): ", squareAnimation.playState);
+  console.log("pending after play(): ", squareAnimation.pending);
 });
