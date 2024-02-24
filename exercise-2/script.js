@@ -69,7 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   async function jump() {
-    if (character.getAnimations().find((animation) => animation.id === "jump"))
+    if (
+      streetAnimation.playState !== "running" ||
+      character.getAnimations().find((animation) => animation.id === "jump")
+    )
       return;
     characterAnimation.pause();
     character.classList.add("jump");
@@ -95,6 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
     character.classList.remove("jump");
   }
 
+  function togglePlayState() {
+    document.getAnimations().forEach((animation) => {
+      if (animation.playState === "running") {
+        animation.pause();
+      } else {
+        animation.play();
+      }
+    });
+  }
+
   document.addEventListener("keyup", (event) => {
     switch (event.code) {
       case "ArrowUp":
@@ -105,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       case "ArrowLeft":
         break;
       case "Space":
+        togglePlayState();
         break;
 
       default:
