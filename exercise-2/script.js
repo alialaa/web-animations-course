@@ -93,6 +93,24 @@ document.addEventListener("DOMContentLoaded", () => {
         easing: "ease-in-out",
       }
     );
+    const { duration, iterations, easing, direction } =
+      jumpAnimation.effect.getComputedTiming();
+    document.querySelector(".shadow").animate(
+      [
+        {
+          transform: "scale(1)",
+        },
+        {
+          transform: "scale(1.15)",
+        },
+      ],
+      {
+        duration,
+        iterations,
+        easing,
+        direction,
+      }
+    );
     await jumpAnimation.finished;
     characterAnimation.play();
     character.classList.remove("jump");
