@@ -108,14 +108,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function runFaster() {
+    if (streetAnimation.playbackRate >= 3) return;
+    document.getAnimations().forEach((animation) => {
+      animation.playbackRate *= 1.1;
+    });
+  }
+
+  function runSlower() {
+    if (streetAnimation.playbackRate <= 0.8) return;
+    document.getAnimations().forEach((animation) => {
+      animation.playbackRate *= 0.9;
+    });
+  }
+
+  setInterval(() => {
+    if (streetAnimation.playState === "running") {
+      runSlower();
+    }
+  }, 5000);
+
   document.addEventListener("keyup", (event) => {
     switch (event.code) {
       case "ArrowUp":
         jump();
         break;
       case "ArrowRight":
+        runFaster();
         break;
       case "ArrowLeft":
+        runSlower();
         break;
       case "Space":
         togglePlayState();
