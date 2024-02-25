@@ -125,19 +125,24 @@ document.addEventListener("DOMContentLoaded", () => {
         animation.play();
       }
     });
+    addNewCar();
   }
 
   function runFaster() {
     if (streetAnimation.playbackRate >= 3) return;
     document.getAnimations().forEach((animation) => {
-      animation.playbackRate *= 1.1;
+      if (animation.id !== "car") {
+        animation.playbackRate *= 1.1;
+      }
     });
   }
 
   function runSlower() {
     if (streetAnimation.playbackRate <= 0.8) return;
     document.getAnimations().forEach((animation) => {
-      animation.playbackRate *= 0.9;
+      if (animation.id !== "car") {
+        animation.playbackRate *= 0.9;
+      }
     });
   }
 
@@ -148,6 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000);
 
   async function addNewCar() {
+    if (
+      streetAnimation.playState !== "running" ||
+      document.querySelector(".car")
+    )
+      return;
     const car = document.createElement("div");
     car.classList = "car";
     const carAnimation = car.animate(
@@ -160,16 +170,27 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ],
       {
-        duration: 2000,
+        id: "car",
+        duration: Math.random() * 4000 + 200,
         easing: "linear",
       }
     );
     carWrapper.appendChild(car);
     await carAnimation.finished;
     car.remove();
+
+    setTimeout(() => {
+      if (streetAnimation.playState === "running") {
+        addNewCar();
+      }
+    }, Math.random() * 4000);
   }
 
-  addNewCar();
+  streetAnimation.ready.then(() => {
+    if (streetAnimation.playState === "running") {
+      addNewCar();
+    }
+  });
 
   document.addEventListener("keyup", (event) => {
     switch (event.code) {
