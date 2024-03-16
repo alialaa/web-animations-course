@@ -5,34 +5,12 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
-  timeline-scope: --progress-view;
 }
 
 .container {
   height: 100vh;
   overflow: auto;
   background-color: #100e1e;
-  animation: both changeBg;
-  animation-timeline: --progress-view;
-}
-
-.container:before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 5px;
-  background-color: gold;
-  top: 100px;
-  z-index: 100;
-}
-.container:after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 5px;
-  background-color: gold;
-  bottom: 100px;
-  z-index: 100;
 }
 
 .content {
@@ -54,11 +32,8 @@ body {
   top: 0;
   left: 0;
   background-color: rgb(209, 90, 213);
-  view-timeline: --progress-view;
   animation: linear both animateWidth;
-  animation-timeline: --progress-view;
-  view-timeline-inset: 100px 100px;
-  animation-range: 100px normal;
+  animation-timeline: view(block 20%);
 }
 
 @keyframes animateWidth {
