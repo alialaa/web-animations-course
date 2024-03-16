@@ -16,6 +16,25 @@ body {
   animation-timeline: --progress-view;
 }
 
+.container:before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 5px;
+  background-color: gold;
+  top: 100px;
+  z-index: 100;
+}
+.container:after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 5px;
+  background-color: gold;
+  bottom: 100px;
+  z-index: 100;
+}
+
 .content {
   padding: 30px;
   max-width: 700px;
@@ -38,7 +57,8 @@ body {
   view-timeline: --progress-view;
   animation: linear both animateWidth;
   animation-timeline: --progress-view;
-  animation-range: 30% 70%;
+  view-timeline-inset: 100px 100px;
+  animation-range: 100px normal;
 }
 
 @keyframes animateWidth {
