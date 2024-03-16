@@ -7,10 +7,17 @@
     <title>Scroll Driven Animations</title>
   </head>
   <body>
-    <div class="container">
-      <div class="square"></div>
-      <div class="content">
-        <div style="height: 200vh; background-color: black"></div>
+    <div style="display: flex; timeline-scope: --container-2">
+      <div class="container">
+        <div class="square"></div>
+        <div class="content">
+          <div style="height: 200vh; background-color: black"></div>
+        </div>
+      </div>
+      <div class="container-2">
+        <div class="content">
+          <div style="height: 200vh; background-color: black"></div>
+        </div>
       </div>
     </div>
     <div style="height: 200vh; background-color: #1a272f; margin: 20px"></div>

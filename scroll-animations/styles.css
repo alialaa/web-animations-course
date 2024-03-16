@@ -5,14 +5,24 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
+  timeline-scope: --container-timeline;
 }
 
 .container {
   height: 50vh;
+  flex: 1;
   overflow: auto;
   background-color: #100e1e;
-  animation: changeBg;
-  animation-timeline: scroll(self);
+  scroll-timeline: --container-timeline block;
+  animation: changeBg both;
+  animation-timeline: --container-2;
+}
+.container-2 {
+  height: 50vh;
+  flex: 1;
+  overflow: auto;
+  background-color: #487c55;
+  scroll-timeline: --container-2;
 }
 
 .content {
@@ -26,20 +36,19 @@ body {
   height: 100px;
   background-color: gold;
   animation: linear move both;
-  animation-timeline: scroll();
-  animation-range: 100px;
+  animation-timeline: --container-2;
   position: sticky;
   top: 0;
 }
 
 @keyframes move {
   to {
-    transform: translateX(calc(100vw - 100px));
+    transform: translateX(calc(50vw - 100px));
   }
 }
 
 @keyframes changeBg {
   to {
-    background-color: black;
+    background-color: rgb(60, 46, 77);
   }
 }
