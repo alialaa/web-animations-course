@@ -5,12 +5,15 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
+  timeline-scope: --progress-view;
 }
 
 .container {
   height: 100vh;
   overflow: auto;
   background-color: #100e1e;
+  animation: both changeBg;
+  animation-timeline: --progress-view;
 }
 
 .content {
@@ -28,9 +31,27 @@ body {
 }
 .progress-inner {
   position: absolute;
-  width: 50%;
   height: 100%;
   top: 0;
   left: 0;
   background-color: rgb(209, 90, 213);
+  view-timeline: --progress-view;
+  animation: linear both animateWidth;
+  animation-timeline: --progress-view;
+  animation-range: 30% 70%;
+}
+
+@keyframes animateWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes changeBg {
+  to {
+    background-color: rgb(38, 42, 108);
+  }
 }
