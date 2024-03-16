@@ -8,12 +8,11 @@ body {
 }
 
 .container {
-  height: 100vh;
+  height: 50vh;
   overflow: auto;
   background-color: #100e1e;
-  /* scroll-timeline-name: --container;
-  scroll-timeline-axis: block; */
-  scroll-timeline: --container-timeline block;
+  animation: changeBg;
+  animation-timeline: scroll(self);
 }
 
 .content {
@@ -27,7 +26,7 @@ body {
   height: 100px;
   background-color: gold;
   animation: linear move;
-  animation-timeline: --container-timeline;
+  animation-timeline: scroll();
   position: sticky;
   top: 0;
 }
@@ -35,5 +34,11 @@ body {
 @keyframes move {
   to {
     transform: translateX(calc(100vw - 100px));
+  }
+}
+
+@keyframes changeBg {
+  to {
+    background-color: coral;
   }
 }
