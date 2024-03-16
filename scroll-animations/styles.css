@@ -11,6 +11,9 @@ body {
   height: 100vh;
   overflow: auto;
   background-color: #100e1e;
+  /* scroll-timeline-name: --container;
+  scroll-timeline-axis: block; */
+  scroll-timeline: --container-timeline block;
 }
 
 .content {
@@ -23,7 +26,8 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
-  animation: 5s infinite alternate move;
+  animation: linear move;
+  animation-timeline: --container-timeline;
   position: sticky;
   top: 0;
 }
