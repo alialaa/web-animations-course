@@ -11,6 +11,9 @@ body {
   height: 100vh;
   overflow: auto;
   background-color: #100e1e;
+  flex: 1;
+  border: 2px solid gold;
+  box-sizing: border-box;
 }
 
 .content {
@@ -33,23 +36,4 @@ body {
   top: 0;
   left: 0;
   background-color: rgb(209, 90, 213);
-  animation: linear both animateWidth;
-  animation-timeline: view(20%);
-  animation-range-start: cover;
-  animation-range-end: contain;
-}
-
-@keyframes animateWidth {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes changeBg {
-  to {
-    background-color: rgb(38, 42, 108);
-  }
 }
