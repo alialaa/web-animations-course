@@ -105,6 +105,16 @@
   font-size: 3.5rem;
   text-align: center;
 }
+.hero .content .content-inner h2.first {
+  animation: both title1;
+  animation-timeline: --hero-view;
+  animation-range: exit-crossing 0% exit-crossing 10%;
+}
+.hero .content .content-inner h2.second {
+  animation: both title2;
+  animation-timeline: --hero-view;
+  animation-range: exit-crossing 10% exit-crossing 70%;
+}
 
 @keyframes frontVideoClipPath {
   20% {
@@ -165,5 +175,31 @@
   to {
     opacity: 0;
     transform: scale(1.1);
+  }
+}
+
+@keyframes title1 {
+  to {
+    display: none;
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes title2 {
+  from {
+    display: none;
+    transform: scale(0);
+    opacity: 0;
+  }
+  30%,
+  70% {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) rotate(5deg);
+    opacity: 0;
   }
 }
