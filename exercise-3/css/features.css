@@ -3,6 +3,7 @@
   background-image: linear-gradient(transparent, black, transparent);
   position: relative;
   overflow: hidden;
+  view-timeline: --features-view;
 }
 
 .features .cards {
@@ -10,8 +11,11 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 40px;
   padding: 20px 30px;
+  perspective: 1000px;
+  --num: 5;
 }
 .features .cards .card {
+  --j: var(--num) - var(--i);
   width: 100%;
   height: 100%;
   padding: 30px;
@@ -22,9 +26,28 @@
   border-radius: 4px;
   -webkit-box-reflect: below 5px
     linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  animation: both featuresCard;
+  animation-timeline: --features-view;
+  animation-range: cover 20% cover 50%;
 }
 .features .cards .card:hover {
   background-color: rgb(219, 76, 235, 0.4);
+}
+
+.features .cards .card:nth-child(1) {
+  --i: 1;
+}
+.features .cards .card:nth-child(2) {
+  --i: 2;
+}
+.features .cards .card:nth-child(3) {
+  --i: 3;
+}
+.features .cards .card:nth-child(4) {
+  --i: 4;
+}
+.features .cards .card:nth-child(5) {
+  --i: 5;
 }
 
 .features .cards .card h3 {
@@ -42,4 +65,18 @@
   width: 100%;
   max-width: 100px;
   margin-bottom: 1rem;
+}
+
+@keyframes featuresCard {
+  0% {
+    transform: translate3d(
+        calc(-100% * (var(--num) + var(--j)) - (var(--i) - 1) * 40px - 60px),
+        0,
+        calc(300px * (var(--j)))
+      )
+      rotateY(calc(45deg + 60deg * (var(--i) / var(--num))));
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
 }
