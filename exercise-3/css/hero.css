@@ -1,5 +1,6 @@
 .hero {
   height: 100vh;
+  view-timeline: --hero-view;
 }
 .hero-inner {
   height: 100vh;
