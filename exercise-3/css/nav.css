@@ -31,6 +31,24 @@ header.nav h1 svg {
 
 header.nav h1 svg .cls-1 {
   fill: rgba(255, 255, 255, 1);
+  transition: 0.7s;
+  stroke: rgba(255, 255, 255, 0);
+  stroke-width: 2px;
+}
+header.nav h1 svg.animate .cls-1 {
+  fill: rgba(255, 255, 255, 0);
+  stroke: var(--green);
+  stroke-dasharray: 1000;
+  animation: 3s ease-in-out drawLogo;
+}
+
+@keyframes drawLogo {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 header.nav .navigation ul {
