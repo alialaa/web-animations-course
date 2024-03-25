@@ -91,6 +91,10 @@
   stroke: var(--green);
   stroke-width: 1px;
   opacity: 0.03;
+  stroke-dasharray: 1000;
+  animation: 2s infinite neon, both drawLogo;
+  animation-timeline: auto, --team-view;
+  animation-range: contain 0% contain 20%;
 }
 
 @keyframes moveTeamGrid {
@@ -137,5 +141,23 @@
   100% {
     opacity: 1;
     clip-path: inset(0%);
+  }
+}
+
+@keyframes neon {
+  0% {
+    opacity: 0.03;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.2;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.1;
   }
 }
