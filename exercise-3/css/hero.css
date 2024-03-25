@@ -1,10 +1,12 @@
 .hero {
-  height: 100vh;
+  height: 150vh;
   view-timeline: --hero-view;
 }
 .hero-inner {
   height: 100vh;
   overflow: hidden;
+  position: sticky;
+  top: 0;
 }
 
 .hero .back-video {
@@ -25,6 +27,9 @@
     5% 93%,
     0% 12%
   );
+  animation: forwards backVideo;
+  animation-timeline: --hero-view;
+  animation-range: exit-crossing 0% exit-crossing 20%;
 }
 
 .hero .back-video video {
@@ -56,6 +61,9 @@
     30% 100%,
     0% 50%
   );
+  animation: both frontVideoClipPath, both border;
+  animation-timeline: --hero-view;
+  animation-range: exit-crossing;
 }
 
 .hero .front-video video {
@@ -74,6 +82,9 @@
     0% 50%
   );
   filter: saturate(0.2);
+  animation: both frontVideoClipPath, both frontVideoSaturation;
+  animation-timeline: --hero-view;
+  animation-range: exit-crossing;
 }
 
 .hero .content {
@@ -93,4 +104,66 @@
 .hero .content .content-inner h2 {
   font-size: 3.5rem;
   text-align: center;
+}
+
+@keyframes frontVideoClipPath {
+  20% {
+    clip-path: polygon(
+      0% 0%,
+      30% 0%,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      30% 100%,
+      0% 100%
+    );
+  }
+  to {
+    clip-path: polygon(
+      0% 0%,
+      30% 0%,
+      50% 0%,
+      100% 0%,
+      100% 90%,
+      30% 100%,
+      0% 90%
+    );
+  }
+}
+
+@keyframes frontVideoSaturation {
+  20% {
+    filter: saturate(1);
+  }
+  to {
+    filter: saturate(0.2);
+  }
+}
+
+@keyframes border {
+  0% {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  20% {
+    padding: 5px;
+  }
+  70% {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 3px;
+  }
+}
+
+@keyframes backVideo {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
 }
