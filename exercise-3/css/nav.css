@@ -52,6 +52,14 @@ header.nav h1 svg.animate .cls-1 {
   animation: 3s ease-in-out drawLogo;
 }
 
+@media (prefers-reduced-motion) {
+  header.nav h1 svg.animate .cls-1 {
+    animation: none;
+    fill: rgba(255, 255, 255, 1);
+    stroke: rgba(255, 255, 255, 0);
+  }
+}
+
 @keyframes drawLogo {
   from {
     stroke-dashoffset: 1000;

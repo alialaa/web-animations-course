@@ -2,6 +2,13 @@
   height: 150vh;
   view-timeline: --hero-view;
 }
+
+@media (prefers-reduced-motion) {
+  .hero {
+    height: 100vh;
+  }
+}
+
 .hero-inner {
   height: 100vh;
   overflow: hidden;
@@ -30,6 +37,12 @@
   animation: forwards backVideo;
   animation-timeline: --hero-view;
   animation-range: exit-crossing 0% exit-crossing 20%;
+}
+
+@media (prefers-reduced-motion) {
+  .hero .back-video {
+    animation: none;
+  }
 }
 
 .hero .back-video video {
@@ -66,6 +79,12 @@
   animation-range: exit-crossing;
 }
 
+@media (prefers-reduced-motion) {
+  .hero .front-video {
+    animation: none;
+  }
+}
+
 .hero .front-video video {
   width: 100%;
   height: 100%;
@@ -85,6 +104,12 @@
   animation: both frontVideoClipPath, both frontVideoSaturation;
   animation-timeline: --hero-view;
   animation-range: exit-crossing;
+}
+
+@media (prefers-reduced-motion) {
+  .hero .front-video video {
+    animation: none;
+  }
 }
 
 .hero .content {
@@ -114,6 +139,13 @@
   animation: both title2;
   animation-timeline: --hero-view;
   animation-range: exit-crossing 10% exit-crossing 70%;
+}
+
+@media (prefers-reduced-motion) {
+  .hero .content .content-inner h2.first,
+  .hero .content .content-inner h2.second {
+    animation: none;
+  }
 }
 
 @keyframes frontVideoClipPath {

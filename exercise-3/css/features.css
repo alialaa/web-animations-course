@@ -30,6 +30,13 @@
   animation-timeline: --features-view;
   animation-range: cover 20% cover 50%;
 }
+
+@media (prefers-reduced-motion) {
+  .features .cards .card {
+    animation: none;
+  }
+}
+
 .features .cards .card:hover {
   background-color: rgb(219, 76, 235, 0.4);
 }
