@@ -18,10 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".active")
       .forEach((e) => e.classList.remove("active"));
     item.classList.add("active");
+
+    grid.style.viewTransitionName = "grid";
   }
 
   function displayGrid() {
     document.documentElement.scrollTop = 0;
+    grid.style.viewTransitionName = "none";
     gridButton.style.display = "none";
     gridOuter.classList.remove("expanded");
     header.classList.remove("expanded");

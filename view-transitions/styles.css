@@ -81,6 +81,7 @@ img {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
+  /* view-transition-name: grid; */
 }
 
 .grid .grid-item {
@@ -165,15 +166,18 @@ img {
 
 @keyframes slideOut {
   to {
-    transform: translateX(-100%);
+    transform: translateX(-30px);
+    opacity: 0;
   }
 }
 @keyframes slideIn {
   from {
-    transform: translateX(100%);
+    transform: translateX(30px);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -188,6 +192,11 @@ img {
 ::view-transition-new(header) {
   animation: none;
 }
+
+/* ::view-transition-old(grid),
+::view-transition-new(grid) {
+  animation: none;
+} */
 
 /* ::view-transition-group(header-title) {
   animation-duration: 5s;
