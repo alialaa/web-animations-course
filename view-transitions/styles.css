@@ -157,3 +157,24 @@ img {
   line-height: 1.8;
   margin-top: 40px;
 }
+
+@keyframes slideOut {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.5s both ease-in-out slideOut;
+}
+::view-transition-new(root) {
+  animation: 0.5s both ease-in-out slideIn;
+}
