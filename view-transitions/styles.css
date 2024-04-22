@@ -56,7 +56,6 @@ img {
 }
 
 .header .title h1 {
-  view-transition-name: header-title;
   color: #c7d0e9;
   font-weight: 400;
 }

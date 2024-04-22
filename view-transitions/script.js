@@ -46,34 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
       expandImage(item);
     });
 
-    transition.skipTransition();
+    await transition.finished;
 
-    try {
-      await transition.ready;
-      console.log(
-        "transition.ready ✅ pseudo-element tree is created and the transition animation is about to start."
-      );
-    } catch (e) {
-      console.log("transition.ready error ❌", e);
-    }
-
-    try {
-      await transition.updateCallbackDone;
-      console.log(
-        "transition.updateCallbackDone ✅ DOM was updated successfully but that does not guarantee that the transition was successful."
-      );
-    } catch (e) {
-      console.log("transition.updateCallbackDone error ❌", e);
-    }
-
-    try {
-      await transition.finished;
-      console.log(
-        "transition.finished ✅ transition animation is finished, and the new page view is visible and interactive to the user."
-      );
-    } catch (e) {
-      console.log("transition.finished error ❌", e);
-    }
+    item.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
   });
 
   gridButton.addEventListener("click", async (e) => {
