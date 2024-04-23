@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await transition.finished;
 
+    // largeImage.style.viewTransitionName = "none";
+
     item.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
@@ -67,8 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
       displayGrid();
       return;
     }
-    document.startViewTransition(() => {
+
+    const activeThumbnail = grid.querySelector(".active img");
+    const largeImage = main.querySelector("img");
+
+    const transition = document.startViewTransition(() => {
+      activeThumbnail.style.viewTransitionName = "image";
+      largeImage.style.viewTransitionName = "none";
       displayGrid();
     });
+
+    await transition.finished;
+
+    activeThumbnail.style.viewTransitionName = "none";
   });
 });
