@@ -206,6 +206,14 @@ img {
   object-fit: cover;
 }
 
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-new(*),
+  ::view-transition-old(*) {
+    animation: none !important;
+  }
+}
+
 /* ::view-transition-old(grid),
 ::view-transition-new(grid) {
   animation: none;
