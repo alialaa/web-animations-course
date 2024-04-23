@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector(".main .item");
   const gridButton = document.querySelector(".grid-view-button");
 
+  function populateGridItemViewTransitionName(clear) {
+    grid.querySelectorAll(".grid-item").forEach((item, index) => {
+      item.style.viewTransitionName = clear ? "none" : `grid-item-${index}`;
+    });
+  }
+
+  populateGridItemViewTransitionName();
+
   function expandImage(item) {
     const title = item.querySelector("h3").innerText;
     const largeImage = item.dataset.largeImage;
@@ -56,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await transition.finished;
 
+    populateGridItemViewTransitionName(true);
+
     // largeImage.style.viewTransitionName = "none";
 
     item.scrollIntoView({
@@ -72,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const activeThumbnail = grid.querySelector(".active img");
     const largeImage = main.querySelector("img");
+
+    populateGridItemViewTransitionName();
 
     const transition = document.startViewTransition(() => {
       activeThumbnail.style.viewTransitionName = "image";

@@ -90,6 +90,7 @@ img {
   padding: 10px;
   cursor: pointer;
   transition: border-color 0.3s;
+  view-transition-class: grid-item;
 }
 .grid .grid-item.active {
   border-color: #6ec7d5;
