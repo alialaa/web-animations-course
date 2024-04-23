@@ -42,7 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const thumbnail = item.querySelector("img");
+    const largeImage = main.querySelector("img");
+
+    thumbnail.style.viewTransitionName = "image";
+    largeImage.style.viewTransitionName = "none";
+
     const transition = document.startViewTransition(() => {
+      thumbnail.style.viewTransitionName = "none";
+      largeImage.style.viewTransitionName = "image";
       expandImage(item);
     });
 

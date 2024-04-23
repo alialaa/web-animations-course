@@ -193,6 +193,18 @@ img {
   animation: none;
 }
 
+::view-transition-new(image),
+::view-transition-old(image) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+  overflow: hidden;
+}
+
+::view-transition-new(image) {
+  object-fit: cover;
+}
+
 /* ::view-transition-old(grid),
 ::view-transition-new(grid) {
   animation: none;
