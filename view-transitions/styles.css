@@ -162,3 +162,9 @@ img {
   line-height: 1.8;
   margin-top: 40px;
 }
+
+html:not(.back)::view-transition-old(root),
+html:not(.back)::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

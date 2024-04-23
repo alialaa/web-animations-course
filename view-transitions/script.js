@@ -39,9 +39,33 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const { top, left, right, bottom } = item.getBoundingClientRect();
+
     const transition = document.startViewTransition(() => {
       expandImage(item);
     });
+
+    await transition.ready;
+
+    document.documentElement.animate(
+      [
+        {
+          clipPath: `inset(${top}px ${innerWidth - right}px ${
+            innerHeight - bottom
+          }px ${left}px)`,
+          filter: "contrast(0.3)",
+        },
+        {
+          clipPath: "inset(0%)",
+          filter: "contrast(1)",
+        },
+      ],
+      {
+        duration: 300,
+        easing: "ease-in",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
 
     await transition.finished;
 
@@ -57,8 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    document.documentElement.classList.add("back");
     const transition = document.startViewTransition(() => {
       displayGrid();
     });
+    await transition.finished;
+    document.documentElement.classList.remove("back");
   });
 });
