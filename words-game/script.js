@@ -1,5 +1,5 @@
 const MAX_LIVES = 8;
-const LIFE_PRICE = 25;
+const LIFE_PRICE = 5;
 const WORD_LENGTH = 5;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // indexes.length will be greater than zero if the chosen letter is correct.
     if (indexes.length > 0) {
+      coinsTextEl.style.viewTransitionName = "coins";
       points += 10; // add 10 points for every correct guess.
       indexes.forEach((i) => (guess[i] = letter)); // populate the user's guess array
 
@@ -71,8 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
     chosenLetters.push(letter); // keep track of chosen letters
 
     // Update the DOM based on the chosen letter, the correct indexes and the result (if we have a result)
-    document.startViewTransition(() => {
+    const transition = document.startViewTransition(() => {
       updateDOM(letter, indexes, result);
+    });
+
+    transition.finished.then(() => {
+      coinsTextEl.style.viewTransitionName = "none";
     });
   }
 
@@ -165,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const heart = document.createElement("img");
         heart.src = "./assets/heart-balloon-svgrepo-com.svg";
         heart.alt = "";
+        heart.style.viewTransitionName = `life-${i}`;
         heartsEl.appendChild(heart);
       });
   }
@@ -174,11 +180,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function buyLife() {
     if (points < LIFE_PRICE) return;
     coinsAudio.play();
+    coinsTextEl.style.viewTransitionName = "coins";
     points -= LIFE_PRICE;
     lives += 1;
 
     // Make sure to update the DOM after updating lives and points
-    updateDOM();
+    const transition = document.startViewTransition(() => {
+      updateDOM();
+    });
+
+    transition.finished.then(() => {
+      coinsTextEl.style.viewTransitionName = "none";
+    });
   }
 
   // Populates the DOM of the coins part, based on the points variable, called every time we update the points variable.
@@ -215,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Clear any answer, lives, points, guess and chosenLetters from previous games
       answer = res[0].split("");
       lives = MAX_LIVES;
-      points = 0;
+      points = 100;
       guess = Array(WORD_LENGTH).fill(""); // ["","","","",""]
       chosenLetters = [];
 
