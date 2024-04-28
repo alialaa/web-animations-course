@@ -59,9 +59,16 @@ body {
   cursor: pointer;
   transition: 0.3s;
   position: relative;
+  z-index: 10;
 }
 #letters .letter {
   position: relative;
+}
+#letters .letter button.clone {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
 }
 
 #letters .letter button:hover {

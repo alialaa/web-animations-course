@@ -117,17 +117,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Loop through all alphabet letters and populate the letter buttons.
     letters.forEach((letter) => {
+      let occurrences = 0;
+
+      answer.forEach((l) => {
+        if (l === letter) {
+          occurrences += 1;
+        }
+      });
+
       const letterWrapper = document.createElement("div");
       letterWrapper.classList.add(`letter`, `letter-${letter}`);
-      letterWrapper.style.viewTransitionName = `letter-${letter}`;
+
+      const buttons = [];
 
       const button = document.createElement("button");
+      button.style.viewTransitionName = `letter-${letter}-0`;
       button.innerText = letter.toUpperCase();
       button.addEventListener("click", () => {
         chooseLetter(letter);
       });
 
-      letterWrapper.append(button);
+      buttons.push(button);
+
+      if (occurrences > 1) {
+        Array(occurrences - 1)
+          .fill(null)
+          .forEach((n, i) => {
+            const buttonClone = button.cloneNode(true);
+            buttonClone.style.viewTransitionName = `letter-${letter}-${i + 1}`;
+            buttonClone.classList.add("clone");
+            buttons.push(buttonClone);
+          });
+      }
+
+      letterWrapper.append(...buttons);
 
       lettersEl.appendChild(letterWrapper);
     });
@@ -208,12 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Populate the guess slots based on the chosen letter and the correct indexes.
   function populateGuess(letter, indexes) {
     const slots = document.querySelector(".guess.main").children;
-    indexes.forEach((index, _index) => {
+    indexes.forEach((pos, index) => {
       const slotItem = document.createElement("div");
       slotItem.innerText = letter.toUpperCase();
       slotItem.classList.add("letter", `letter-${letter}`);
-      slotItem.style.viewTransitionName = `letter-${letter}`;
-      slots[index].appendChild(slotItem);
+      slotItem.style.viewTransitionName = `letter-${letter}-${index}`;
+      slots[pos].appendChild(slotItem);
     });
   }
 
@@ -221,12 +244,12 @@ document.addEventListener("DOMContentLoaded", () => {
   async function newGame() {
     try {
       // Get a new word from the API
-      const res = await fetch(
-        `https://random-word-api.herokuapp.com/word?length=${WORD_LENGTH}&number=1`
-      ).then((r) => r.json());
-      console.log(res[0]);
+      // const res = await fetch(
+      //   `https://random-word-api.herokuapp.com/word?length=${WORD_LENGTH}&number=1`
+      // ).then((r) => r.json());
+      // console.log(res[0]);
       // Clear any answer, lives, points, guess and chosenLetters from previous games
-      answer = res[0].split("");
+      answer = "spoon".split("");
       lives = MAX_LIVES;
       points = 100;
       guess = Array(WORD_LENGTH).fill(""); // ["","","","",""]
