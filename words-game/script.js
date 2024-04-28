@@ -71,7 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
     chosenLetters.push(letter); // keep track of chosen letters
 
     // Update the DOM based on the chosen letter, the correct indexes and the result (if we have a result)
-    updateDOM(letter, indexes, result);
+    document.startViewTransition(() => {
+      updateDOM(letter, indexes, result);
+    });
   }
 
   // This function updates the DOM based on the chosen letter (if exists), the correct indexes (if exists) and the final result (if exists)
@@ -112,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     letters.forEach((letter) => {
       const letterWrapper = document.createElement("div");
       letterWrapper.classList.add(`letter`, `letter-${letter}`);
+      letterWrapper.style.viewTransitionName = `letter-${letter}`;
 
       const button = document.createElement("button");
       button.innerText = letter.toUpperCase();
@@ -196,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const slotItem = document.createElement("div");
       slotItem.innerText = letter.toUpperCase();
       slotItem.classList.add("letter", `letter-${letter}`);
+      slotItem.style.viewTransitionName = `letter-${letter}`;
       slots[index].appendChild(slotItem);
     });
   }
