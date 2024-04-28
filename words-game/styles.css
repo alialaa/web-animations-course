@@ -256,3 +256,31 @@ body {
 ::view-transition-new(coins) {
   animation: 0.25s ease-out both pop-in;
 }
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+::view-transition-old(modal):only-child {
+  animation: 0.25s ease-out both scale-out;
+}
+::view-transition-new(modal):only-child {
+  animation: 0.25s ease-out both scale-in;
+}

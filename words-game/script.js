@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalGuessEl.innerHTML = "";
     // Hide Modal if it was shown
     modal.classList.add("hide");
+    modal.style.viewTransitionName = "none";
 
     // Loop through all alphabet letters and populate the letter buttons.
     letters.forEach((letter) => {
@@ -177,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayModal(result) {
     modalTitle.innerText = result === "win" ? "Good Job!" : "Game Over!";
     modal.classList.remove("hide");
+    modal.style.viewTransitionName = "modal";
   }
 
   // Populates the DOM of the lives part, based on the lives variable, called every time we update the lives variable.
@@ -256,7 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
       chosenLetters = [];
 
       // Re-initialize the DOM to clear any old state
-      initDOM();
+      document.startViewTransition(() => {
+        initDOM();
+      });
     } catch (e) {
       console.log(e);
     }
