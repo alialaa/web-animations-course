@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Guess The Word</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Guess The Word</h1>
+      <div class="info">
+        <div class="lives">
+          <span class="visually-hidden"
+            >Lives: <span class="lives-count"></span>
+          </span>
+          <div class="hearts"></div>
+        </div>
+        <button class="buy-button" disabled>
+          1 <img src="./assets/heart-balloon-svgrepo-com.svg" alt="" /> for 25
+          <img src="./assets/coins-currency-svgrepo-com.svg" alt="" />
+        </button>
+        <div class="coins">
+          <img src="./assets/coins-currency-svgrepo-com.svg" alt="" />
+          <div class="count">
+            <span class="visually-hidden">Coins:</span>
+            <span class="coins-count">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="guess main"></div>
+      <div id="letters"></div>
+    </div>
+
+    <div class="result hide">
+      <div class="result-inner">
+        <h3 class="title">Game Over!</h3>
+        <div class="guess"></div>
+        <button class="new-game-button">New Game</button>
+      </div>
+    </div>
+  </body>
+</html>
