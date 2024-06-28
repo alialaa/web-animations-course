@@ -10,6 +10,12 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "digital";
+  src: url("assets/digital-7.ttf");
+}
+
 .sky {
   background-image: linear-gradient(rgb(97, 191, 228), rgb(204, 233, 245));
   height: 50vh;
