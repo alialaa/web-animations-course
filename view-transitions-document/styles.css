@@ -38,6 +38,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
+  view-transition-name: header;
 }
 .header .header-inner {
   height: var(--header-height);
@@ -49,7 +50,9 @@ img {
 .header.single .header-inner {
   justify-content: flex-start;
 }
-
+.header .title {
+  view-transition-name: header-title;
+}
 .header .title h1 {
   color: #c7d0e9;
   font-weight: 400;
@@ -147,6 +150,9 @@ img {
 .wrapper.single .main {
   display: block;
 }
+.wrapper.single .main .item > img {
+  view-transition-name: image;
+}
 .wrapper .main h2 {
   font-size: 2rem;
   font-weight: 500;
@@ -164,4 +170,46 @@ img {
 .wrapper .main .description p {
   line-height: 1.8;
   margin-top: 40px;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes slideOld {
+  to {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+@keyframes slideNew {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.3s both ease-in-out slideOld;
+}
+::view-transition-new(root) {
+  animation: 0.3s both ease-in-out slideNew;
+}
+
+:view-transition-old(image),
+::view-transition-new(image) {
+  animation: none;
+  mix-blend-mode: normal;
+  overflow: hidden;
+  height: 100%;
+}
+::view-transition-old(image) {
+  object-fit: contain;
+}
+::view-transition-new(image) {
+  object-fit: cover;
 }
